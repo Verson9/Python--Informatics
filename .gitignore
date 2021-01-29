@@ -1,9 +1,9 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+/venv/
 # Datasource local storage ignored files
 /../../../../../../:\Users\Verson\PycharmProjects\pythonProject\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-/venv/
