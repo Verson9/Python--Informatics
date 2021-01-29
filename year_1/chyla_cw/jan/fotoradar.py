@@ -1,0 +1,1 @@
+print("FOTORADAR KURWY")
