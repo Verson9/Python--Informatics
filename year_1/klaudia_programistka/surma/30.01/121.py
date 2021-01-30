@@ -60,6 +60,7 @@ def display_user_options():
 
 def main():
     display_user_options()
+    display_names_list()
 
 
 names_list = []
