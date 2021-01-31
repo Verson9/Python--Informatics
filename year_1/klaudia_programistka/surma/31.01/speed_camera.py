@@ -6,7 +6,7 @@ import datetime
 
 
 def get_data_from_speed_cameras():
-    first_speed_camera_register: str
+    input_file = open("data_for_speed_camera", 'r')
 
     registration_number, vehicle_type, distance_traveled, first_speed_camera_register, second_speed_camera_register = input_file.read().split(
         " ")
@@ -57,6 +57,7 @@ def check_if_good_driver_or_fucking_pirate(registered_data, velocity):
 
 
 def output_data(registered_data, velocity, good_driver):
+    output_file = open("output_log", 'a')
     registration_number = registered_data[0]
     log = str(registration_number) + ' ' + str(good_driver) + ' ' + str(velocity)
     output_file.write(log)
@@ -72,6 +73,4 @@ def main():
     output_data(registered_data, velocity, good_driver)
 
 
-input_file = open("data_for_speed_camera", 'r')
-output_file = open("output_log", 'a')
 main()
