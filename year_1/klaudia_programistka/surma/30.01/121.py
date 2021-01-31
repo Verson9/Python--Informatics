@@ -1,6 +1,6 @@
 def display_names_list():
     for i in range(len(names_list)):
-        print(i+1, "\b.",names_list[i])
+        print(i+1, ".",names_list[i])
 
 
 def add_name():
