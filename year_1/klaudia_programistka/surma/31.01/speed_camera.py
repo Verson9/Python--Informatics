@@ -4,18 +4,26 @@
 
 import datetime
 
+def error_msg():
+    print("BLAD")
+    quit()
 
 def get_data_from_speed_cameras():
-    input_file = open("data_for_speed_camera", 'r')
+    # input_file = open("data_for_speed_camera", 'r')
 
-    registration_number, vehicle_type, distance_traveled, first_speed_camera_register, second_speed_camera_register = input_file.read().split(
-        " ")
-    input_file.close()
-    first_speed_camera_time = datetime.time(int(str(first_speed_camera_register).split(':')[0]),
-                                            int(str(first_speed_camera_register).split(':')[1]))
-    second_speed_camera_time = datetime.time(int(str(second_speed_camera_register).split(':')[0]),
-                                             int(str(second_speed_camera_register).split(':')[1]))
-    return registration_number, vehicle_type, distance_traveled, first_speed_camera_time, second_speed_camera_time
+    # registration_number, vehicle_type, distance_traveled, first_speed_camera_register, second_speed_camera_register = input_file.read().split(
+    #     " ")
+    # input_file.close()
+    try:
+        registration_number, vehicle_type, distance_traveled, first_speed_camera_register, second_speed_camera_register = input().split(
+            " ")
+        first_speed_camera_time = datetime.time(int(str(first_speed_camera_register).split(':')[0]),
+                                                int(str(first_speed_camera_register).split(':')[1]))
+        second_speed_camera_time = datetime.time(int(str(second_speed_camera_register).split(':')[0]),
+                                                 int(str(second_speed_camera_register).split(':')[1]))
+        return registration_number, vehicle_type, distance_traveled, first_speed_camera_time, second_speed_camera_time
+    except ValueError or EOFError or TypeError as e:
+        error_msg()
 
 
 def check_registered_data(registered_data):
@@ -25,16 +33,16 @@ def check_registered_data(registered_data):
                 or (1 < i < 6 and registration_number[i].isnumeric()):
             continue
         else:
-            print("BLAD")
-            main()
+            error_msg()
 
 
 def count_time_in_minutes_between(first_speed_camera_time, second_speed_camera_time):
     time_between = float((datetime.timedelta(hours=float(second_speed_camera_time.hour),
-                                     minutes=float(
-                                         second_speed_camera_time.minute)) -
-                  datetime.timedelta(hours=float(first_speed_camera_time.hour), minutes=float(
-                      first_speed_camera_time.minute))).seconds) / 3600
+                                             minutes=float(second_speed_camera_time.minute)) -
+                          datetime.timedelta(hours=float(first_speed_camera_time.hour), minutes=float(
+                              first_speed_camera_time.minute))).seconds) / 3600
+    if first_speed_camera_time > second_speed_camera_time:
+        error_msg()
     return time_between
 
 
@@ -48,7 +56,7 @@ def calculate_data(registered_data):
 
 
 def check_if_good_driver_or_fucking_pirate(registered_data, velocity):
-    if registered_data[1] == "C" and round(velocity, 2) > 90:
+    if registered_data[1] == "C" and round(velocity, 2) > 80:
         return "M"
     elif registered_data[1] == "S" and round(velocity, 2) > 140:
         return "M"
@@ -57,11 +65,8 @@ def check_if_good_driver_or_fucking_pirate(registered_data, velocity):
 
 
 def output_data(registered_data, velocity, good_driver):
-    output_file = open("output_log", 'a')
     registration_number = registered_data[0]
-    log = str(registration_number) + ' ' + str(good_driver) + ' ' + str(velocity)
-    output_file.write(log)
-    output_file.close()
+    log = str(registration_number) + ' ' + str(good_driver) + ' ' + str('{0:.2f}'.format(velocity))
     print(log)
 
 
