@@ -4,16 +4,13 @@
 
 import datetime
 
+
 def error_msg():
     print("BLAD")
     quit()
 
-def get_data_from_speed_cameras():
-    # input_file = open("data_for_speed_camera", 'r')
 
-    # registration_number, vehicle_type, distance_traveled, first_speed_camera_register, second_speed_camera_register = input_file.read().split(
-    #     " ")
-    # input_file.close()
+def get_data_from_speed_cameras():
     try:
         registration_number, vehicle_type, distance_traveled, first_speed_camera_register, second_speed_camera_register = input().split(
             " ")
