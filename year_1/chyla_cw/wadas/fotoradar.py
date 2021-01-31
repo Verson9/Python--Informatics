@@ -1,3 +1,7 @@
+#DW3123 S 1500 21:00 21:01 <--To w prowadzam
+#DW3123   .   90.0 <-- to wychodzi
+#DW3123 . 90.00 <-- to powinno wyjść
+
 registration_number, vehicle_type, distance_traveled, first_speed_camera, second_speed_camera=input("").split(" ")
 first_speed_camera_hours = first_speed_camera[0] + first_speed_camera[1]
 first_speed_camera_minutes = first_speed_camera[3] + first_speed_camera[4]
