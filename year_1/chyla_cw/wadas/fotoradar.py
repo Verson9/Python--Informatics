@@ -1,11 +1,11 @@
-nr, tp, po, fp, fk=input("" ).split(" ")
-fph = fp[0]+fp[1]
-fpm = fp[3]+fp[4]
-fkh = fk[0]+fk[1]
-fkm = fk[3]+fk[4]
+registration_number, vehicle_type, distance_traveled, first_speed_camera, second_speed_camera=input("").split(" ")
+first_speed_camera_hours = first_speed_camera[0] + first_speed_camera[1]
+first_speed_camera_minutes = first_speed_camera[3] + first_speed_camera[4]
+secound_speed_camera_hours = second_speed_camera[0] + second_speed_camera[1]
+second_speed_camera_minutes = second_speed_camera[3] + second_speed_camera[4]
 
 
-litery = {
+letters = {
     "A",
     "B",
     "C",
@@ -33,7 +33,7 @@ litery = {
     "Q",
     "V"
 }
-liczby = {
+numbers = {
     "1",
     "2",
     "3",
@@ -45,12 +45,12 @@ liczby = {
     "9",
     "0"
 }
-liczbya = {
+numbersa = {
     "0",
     "1",
     "2"
 }
-liczbyb = {
+numbersb = {
     "0",
     "1",
     "2",
@@ -59,32 +59,32 @@ liczbyb = {
     "5"
 }
 
-if fp[0] in list(liczbya) and fp[1] in list(liczby) and fp[2] == ":" and fp[3] in list(liczbyb) and fp[4] in list(liczby) and fk[0] in list(liczbya) and fk[1] in list(liczby) and fk[2] == ":" and fk[3] in list(liczbyb) and fk[4] in list(liczby) and int(fph)<24 and int(fpm)<60 and int(fkh)<24 and int(fkm)<60 and nr[0] in list(litery) and nr[1] in list(litery) and nr[2] in list(liczby) and nr[3] in list(liczby) and nr[4] in list(liczby) and nr[5] in list(liczby) and tp == "S" or tp == "C":
-    s=int(po)
-    hfp = int(fph)
-    mfp = int(fpm)
-    hfk = int(fkh)
-    mfk = int(fkm)
-    if hfp>hfk:
-        hfk=hfk+24
-    if mfp>mfk:
-        hfk=hfk-1
-        mfk=mfk+60
-    minuty_fp = hfp * 60 + mfp
-    minuty_fk = hfk * 60 + mfk
-    godziny_fp = minuty_fp / 60
-    godziny_fk = minuty_fk / 60
-    v=s/1000/(godziny_fk-godziny_fp)
+if first_speed_camera[0] in list(numbersa) and first_speed_camera[1] in list(numbers) and first_speed_camera[2] == ":" and first_speed_camera[3] in list(numbersb) and first_speed_camera[4] in list(numbers) and second_speed_camera[0] in list(numbersa) and second_speed_camera[1] in list(numbers) and second_speed_camera[2] == ":" and second_speed_camera[3] in list(numbersb) and second_speed_camera[4] in list(numbers) and int(first_speed_camera_hours)<24 and int(first_speed_camera_minutes)<60 and int(secound_speed_camera_hours)<24 and int(second_speed_camera_minutes)<60 and registration_number[0] in list(letters) and registration_number[1] in list(letters) and registration_number[2] in list(numbers) and registration_number[3] in list(numbers) and registration_number[4] in list(numbers) and registration_number[5] in list(numbers) and vehicle_type == "S" or vehicle_type == "C":
+    s=int(distance_traveled)
+    hours_first_speed_camera = int(first_speed_camera_hours)
+    minutes_first_speed_camera = int(first_speed_camera_minutes)
+    hours_secound_speed_camera = int(secound_speed_camera_hours)
+    minutes_second_speed_camera = int(second_speed_camera_minutes)
+    if hours_first_speed_camera > hours_secound_speed_camera:
+        hours_secound_speed_camera = hours_secound_speed_camera + 24
+    if minutes_first_speed_camera > minutes_second_speed_camera:
+        hours_secound_speed_camera = hours_secound_speed_camera - 1
+        minutes_second_speed_camera = minutes_second_speed_camera + 60
+    minutes_fsc = hours_first_speed_camera * 60 + minutes_first_speed_camera
+    minutes_ssc = hours_secound_speed_camera * 60 + minutes_second_speed_camera
+    hours_fsc = minutes_fsc / 60
+    hours_ssc = minutes_ssc / 60
+    v=s/1000/(hours_ssc - hours_fsc)
 
 
-    if round(v, 2)>80 and tp == "C":
-        mandat="M"
-    elif round(v, 2)>140 and tp == "S":
-        mandat="M"
+    if round(v, 2)>80 and vehicle_type == "C":
+        mandate= "M"
+    elif round(v, 2)>140 and vehicle_type == "S":
+        mandate= "M"
     else:
-        mandat="."
+        mandate= "."
 
-    print(nr," ", mandat," ", round(v, 2))
+    print(registration_number, " ", mandate, " ", round(v, 2))
 else:
     print("BLAD")
 
