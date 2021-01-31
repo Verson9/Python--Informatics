@@ -25,7 +25,7 @@ def check_registered_data(registered_data):
                 or (1 < i < 6 and registration_number[i].isnumeric()):
             continue
         else:
-            print("Blad")
+            print("BLAD")
             main()
 
 
