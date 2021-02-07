@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/pythonProject.iml" filepath="$PROJECT_DIR$/.idea/pythonProject.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/web2PyProject/.idea/web2PyProject.iml" filepath="$USER_HOME$/Desktop/web2PyProject/.idea/web2PyProject.iml" />
     </modules>
   </component>
 </project>
